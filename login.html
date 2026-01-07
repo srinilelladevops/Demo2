@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI - State Bank of India Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #004BA0 0%, #0066CC 50%, #1E90FF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .left-section {
+            color: white;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .left-section h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .left-section p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            width: 30px;
+            height: 30px;
+            background-color: #FF9500;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .right-section {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #004BA0;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .sbi-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #004BA0;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #F9F9F9;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #004BA0;
+            background-color: white;
+            box-shadow: 0 0 8px rgba(0, 75, 160, 0.2);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            margin: 0;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #004BA0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #FF9500;
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #004BA0 0%, #0066CC 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 75, 160, 0.3);
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #003580 0%, #0052A3 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 75, 160, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .register-section {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .register-section p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .register-btn {
+            color: #FF9500;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .register-btn:hover {
+            color: #004BA0;
+        }
+
+        .footer-info {
+            background-color: #F5F5F5;
+            color: #666;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-info strong {
+            color: #004BA0;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .left-section h1 {
+                font-size: 2em;
+            }
+
+            .left-section {
+                text-align: center;
+            }
+
+            .right-section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Welcome to SBI</h1>
+            <p>Experience secure and seamless banking with State Bank of India. Your trusted financial partner since 1806.</p>
+            
+            <div class="features">
+                <div class="feature-item">Safe & Secure Banking Services</div>
+                <div class="feature-item">24/7 Online Access to Accounts</div>
+                <div class="feature-item">Easy Fund Transfers & Payments</div>
+                <div class="feature-item">Competitive Interest Rates</div>
+                <div class="feature-item">Dedicated Customer Support</div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login Form -->
+        <div class="right-section">
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- SBI Logo Circle -->
+                    <circle cx="50" cy="50" r="45" fill="#004BA0"/>
+                    <circle cx="50" cy="50" r="42" fill="white" stroke="#004BA0" stroke-width="2"/>
+                    
+                    <!-- SBI Text -->
+                    <text x="50" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#004BA0" text-anchor="middle">SBI</text>
+                    
+                    <!-- Orange accent -->
+                    <rect x="30" y="75" width="40" height="8" fill="#FF9500" rx="2"/>
+                </svg>
+                <div class="sbi-text">STATE BANK OF INDIA</div>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">User ID / Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your User ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="accountType">Select Account Type</label>
+                    <select id="accountType" name="accountType" required>
+                        <option value="">-- Select Account Type --</option>
+                        <option value="retail">Retail Login</option>
+                        <option value="corporate">Corporate Login</option>
+                        <option value="agri">Agri Login</option>
+                    </select>
+                </div>
+
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">LOGIN</button>
+
+                <div class="divider">OR</div>
+
+                <div class="register-section">
+                    <p>Don't have an account? <a href="#" class="register-btn">Register Now</a></p>
+                    <p style="margin-top: 10px; font-size: 0.85em;">Quick access • Safe & Secure • Banking Made Easy</p>
+                </div>
+
+                <div class="footer-info">
+                    <strong>📍 SBI - Chandanagar Branch</strong>
+                    Chandanagar, Hyderabad
+                    <br>
+                    📞 Customer Care: 1800-425-3800
+                    <br>
+                    🌐 www.sbi.co.in
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const accountType = document.getElementById('accountType').value;
+
+            if (username && password && accountType) {
+                alert(`Login attempt:\nUser ID: ${username}\nAccount Type: ${accountType}\n\nNote: This is a demo form.`);
+            } else {
+                alert('Please fill all fields');
+            }
+        });
+    </script>
+</body>
+</html>
